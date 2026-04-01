@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Metals of Virginia — Custom Fabricated Stainless Steel</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:         #f5f3ef;
+    --bg-2:       #eceae4;
+    --bg-dark:    #1c1e20;
+    --ink:        #1c1e20;
+    --ink-2:      #4a4f56;
+    --ink-3:      #8a9099;
+    --steel:      #6b7580;
+    --steel-lt:   #b0b8c1;
+    --accent:     #4a6070;
+    --accent-lt:  #6d8fa3;
+    --rule:       rgba(107,117,128,0.2);
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans:  'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); font-size: 16px; line-height: 1.6; font-weight: 300; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(245,243,239,0.96); backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 60px;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .logo-mark { display: flex; flex-direction: column; line-height: 1; }
+  .logo-cmv { font-family: var(--font-serif); font-size: 24px; font-weight: 600; letter-spacing: 0.12em; color: var(--ink); }
+  .logo-sub { font-size: 8px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--steel); font-weight: 400; margin-top: 2px; }
+  .logo-div { width: 1px; height: 32px; background: var(--rule); }
+  .logo-tag { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); font-weight: 300; line-height: 1.4; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); text-decoration: none; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; background: var(--accent); color: #fff; border: none; padding: 9px 20px; cursor: pointer; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--accent-lt); }
+
+  .hero { padding-top: 60px; display: grid; grid-template-columns: 55% 45%; min-height: 92vh; border-bottom: 1px solid var(--rule); }
+  .hero-left { padding: 5rem 3rem 5rem 2.5rem; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--rule); }
+  .kicker { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--steel); font-weight: 400; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
+  .kicker::before { content: ''; display: block; width: 28px; height: 1px; background: var(--steel-lt); }
+  .hero-h1 { font-family: var(--font-serif); font-size: clamp(48px, 6vw, 82px); font-weight: 300; line-height: 1.05; color: var(--ink); margin-bottom: 1.75rem; }
+  .hero-h1 em { font-style: italic; color: var(--steel); }
+  .hero-p { font-size: 16px; line-height: 1.75; color: var(--ink-2); max-width: 420px; margin-bottom: 2.25rem; font-weight: 300; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 3.5rem; }
+  .btn-solid { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; background: var(--accent); color: #fff; border: none; padding: 12px 24px; cursor: pointer; transition: background 0.2s; }
+  .btn-solid:hover { background: var(--accent-lt); }
+  .btn-outline { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 400; background: transparent; color: var(--ink-2); border: 1px solid var(--rule); padding: 12px 24px; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+  .btn-outline:hover { border-color: var(--steel); color: var(--ink); }
+  .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule); padding-top: 2rem; }
+  .stat { padding-right: 1.5rem; }
+  .stat + .stat { border-left: 1px solid var(--rule); padding-left: 1.5rem; }
+  .stat-num { font-family: var(--font-serif); font-size: 38px; font-weight: 600; color: var(--ink); line-height: 1; margin-bottom: 4px; }
+  .stat-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); font-weight: 400; }
+
+  .hero-right { background: var(--bg-2); display: grid; grid-template-rows: 1fr 140px; }
+  .hero-main { background: #2e3235; display: flex; align-items: center; justify-content: center; position: relative; }
+  .hero-thumbs { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); }
+  .hero-thumb { background: #3a3f47; display: flex; align-items: center; justify-content: center; position: relative; }
+  .hero-thumb + .hero-thumb { border-left: 1px solid rgba(255,255,255,0.06); }
+  .ph { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.18); font-family: var(--font-sans); }
+  .ph-lt { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(28,30,32,0.25); font-family: var(--font-sans); }
+  .cap { position: absolute; bottom: 8px; left: 10px; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; font-family: var(--font-sans); }
+  .cap-dk { color: rgba(255,255,255,0.28); }
+  .cap-lt { color: rgba(28,30,32,0.35); }
+
+  .ticker { background: var(--bg-dark); padding: 11px 0; overflow: hidden; white-space: nowrap; border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .ticker-track { display: inline-flex; gap: 2.5rem; animation: scroll 30s linear infinite; }
+  .t-item { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(176,184,193,0.5); font-family: var(--font-sans); }
+  .t-sep { color: var(--accent-lt); margin-right: 2.5rem; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  .sec { padding: 5rem 2.5rem; border-top: 1px solid var(--rule); }
+  .eyebrow { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.75rem; font-family: var(--font-sans); }
+  .sec-h2 { font-family: var(--font-serif); font-size: clamp(36px, 4vw, 60px); font-weight: 300; line-height: 1.05; color: var(--ink); margin-bottom: 1rem; }
+  .sec-p { font-size: 15px; color: var(--ink-2); font-weight: 300; line-height: 1.75; max-width: 520px; margin-bottom: 2.5rem; }
+
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .work-card { background: var(--bg); transition: background 0.2s; }
+  .work-card:hover { background: var(--bg-2); }
+  .work-photo { height: 200px; background: #c4ccd4; display: flex; align-items: center; justify-content: center; }
+  .work-photo.dk { background: #3a3f47; }
+  .work-body { padding: 1.5rem; }
+  .work-title { font-family: var(--font-serif); font-size: 22px; font-weight: 400; margin-bottom: 0.4rem; color: var(--ink); }
+  .work-desc { font-size: 14px; color: var(--ink-2); font-weight: 300; line-height: 1.65; margin-bottom: 1rem; }
+  .work-tag { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--steel); border: 1px solid var(--rule); padding: 3px 9px; display: inline-block; font-weight: 400; font-family: var(--font-sans); }
+
+  .cat-bar { display: flex; border: 1px solid var(--rule); margin-bottom: 2.5rem; }
+  .cat-tab { flex: 1; padding: 0.9rem 1rem; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); font-weight: 400; text-align: center; border-right: 1px solid var(--rule); cursor: pointer; transition: background 0.2s, color 0.2s; font-family: var(--font-sans); }
+  .cat-tab:last-child { border-right: none; }
+  .cat-tab:hover, .cat-tab.active { background: var(--accent); color: #fff; }
+
+  .quick-sec { background: #f0eee8; }
+  .quick-hdr { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 2.5rem; gap: 1.5rem; flex-wrap: wrap; }
+  .capacity-pill { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; background: var(--accent); color: #fff; padding: 8px 16px; white-space: nowrap; font-family: var(--font-sans); margin-top: 0.5rem; }
+  .quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .q-card { background: var(--bg); padding: 1.75rem; transition: background 0.2s; }
+  .q-card:hover { background: #fff; }
+  .q-num { font-family: var(--font-serif); font-size: 36px; font-weight: 300; color: var(--steel-lt); line-height: 1; margin-bottom: 0.75rem; }
+  .q-title { font-family: var(--font-serif); font-size: 20px; font-weight: 400; margin-bottom: 0.5rem; color: var(--ink); }
+  .q-desc { font-size: 13px; color: var(--ink-2); font-weight: 300; line-height: 1.65; margin-bottom: 1rem; }
+  .q-time { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); font-weight: 500; font-family: var(--font-sans); }
+
+  .owner-sec { display: grid; grid-template-columns: 260px 1fr; border-top: 1px solid var(--rule); }
+  .owner-left { padding: 4rem 2rem; border-right: 1px solid var(--rule); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; background: var(--bg-2); }
+  .monogram { width: 68px; height: 68px; border: 1px solid var(--steel-lt); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; }
+  .monogram-text { font-family: var(--font-serif); font-size: 26px; font-weight: 600; color: var(--steel); letter-spacing: 0.04em; }
+  .owner-name { font-family: var(--font-serif); font-size: 26px; font-weight: 400; color: var(--ink); margin-bottom: 4px; }
+  .owner-role { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); font-weight: 400; font-family: var(--font-sans); line-height: 1.5; }
+  .owner-right { padding: 4rem 3rem; display: flex; flex-direction: column; justify-content: center; }
+  .owner-quote { font-family: var(--font-serif); font-size: 20px; font-weight: 300; font-style: italic; line-height: 1.65; color: var(--ink); border-left: 2px solid var(--steel-lt); padding-left: 1.5rem; margin-bottom: 1.5rem; }
+  .owner-body { font-size: 15px; color: var(--ink-2); font-weight: 300; line-height: 1.75; max-width: 560px; }
+
+  .process-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 2.5rem; }
+  .p-step { background: var(--bg); padding: 2rem 1.5rem; }
+  .p-n { font-family: var(--font-serif); font-size: 52px; font-weight: 300; color: var(--steel-lt); line-height: 1; margin-bottom: 1rem; }
+  .p-title { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 0.4rem; }
+  .p-desc { font-size: 13px; color: var(--ink-2); font-weight: 300; line-height: 1.65; }
+
+  .gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: 200px 200px; gap: 3px; margin-top: 2.5rem; }
+  .g { background: #c4ccd4; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .g.dk { background: #3a3f47; }
+  .g:nth-child(1) { grid-column: span 5; }
+  .g:nth-child(2) { grid-column: span 4; }
+  .g:nth-child(3) { grid-column: span 3; }
+  .g:nth-child(4) { grid-column: span 3; }
+  .g:nth-child(5) { grid-column: span 6; }
+  .g:nth-child(6) { grid-column: span 3; }
+
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); }
+  .contact-left { padding: 5rem 2.5rem; border-right: 1px solid var(--rule); }
+  .contact-right { padding: 5rem 2.5rem; background: var(--bg-2); }
+  .info-items { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.75rem; }
+  .i-label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 3px; font-family: var(--font-sans); }
+  .i-val { font-family: var(--font-serif); font-size: 22px; font-weight: 400; color: var(--ink); line-height: 1.2; }
+  .i-sub { font-size: 13px; color: var(--ink-3); font-weight: 300; margin-top: 2px; }
+  .cert-box { margin-top: 2.5rem; border: 1px solid var(--rule); padding: 12px 16px; display: flex; align-items: center; gap: 12px; max-width: 280px; }
+  .cert-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
+  .cert-text { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--steel); line-height: 1.5; font-weight: 400; font-family: var(--font-sans); }
+  .c-form { display: flex; flex-direction: column; gap: 10px; margin-top: 1.5rem; }
+  .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .c-form input, .c-form select, .c-form textarea { font-family: var(--font-sans); font-size: 14px; font-weight: 300; background: var(--bg); border: 1px solid var(--rule); color: var(--ink); padding: 11px 13px; width: 100%; outline: none; transition: border-color 0.2s; appearance: none; }
+  .c-form input::placeholder, .c-form textarea::placeholder { color: var(--ink-3); }
+  .c-form input:focus, .c-form select:focus, .c-form textarea:focus { border-color: var(--accent); }
+  .c-form select { color: var(--ink-2); }
+  .c-form textarea { height: 90px; resize: none; }
+
+  footer { background: var(--bg-dark); padding: 2rem 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+  .footer-logo { display: flex; flex-direction: column; line-height: 1; }
+  .footer-cmv { font-family: var(--font-serif); font-size: 18px; font-weight: 600; letter-spacing: 0.1em; color: var(--steel-lt); }
+  .footer-sub { font-size: 8px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(176,184,193,0.35); margin-top: 3px; font-family: var(--font-sans); }
+  .footer-copy { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(176,184,193,0.28); font-weight: 300; font-family: var(--font-sans); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .kicker     { animation: fadeUp 0.5s 0.05s ease both; }
+  .hero-h1    { animation: fadeUp 0.6s 0.15s ease both; }
+  .hero-p     { animation: fadeUp 0.6s 0.25s ease both; }
+  .hero-btns  { animation: fadeUp 0.6s 0.32s ease both; }
+  .hero-stats { animation: fadeUp 0.6s 0.4s ease both; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo-wrap">
+    <div class="logo-mark">
+      <span class="logo-cmv">CMV</span>
+      <span class="logo-sub">Custom Metals of Virginia</span>
+    </div>
+    <div class="logo-div"></div>
+    <div class="logo-tag">Custom Fabricated<br>Stainless Steel</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#commercial">Commercial</a></li>
+    <li><a href="#residential">Residential</a></li>
+    <li><a href="#quick">Quick Jobs</a></li>
+    <li><a href="#showroom">Showroom</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Free Quote</button>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="kicker">Manassas, Virginia — Est. 1992</div>
+    <h1 class="hero-h1">Custom<br>Metal for<br><em>Homes &amp;<br>Businesses</em></h1>
+    <p class="hero-p">Three decades building precision stainless steel, copper, and aluminum — from full commercial kitchens to one-of-a-kind residential pieces. No project too large or too small.</p>
+    <div class="hero-btns">
+      <button class="btn-solid" onclick="document.getElementById('showroom').scrollIntoView({behavior:'smooth'})">View Our Work</button>
+      <button class="btn-outline" onclick="document.getElementById('quick').scrollIntoView({behavior:'smooth'})">Quick Turnaround Jobs</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Years in business</div></div>
+      <div class="stat"><div class="stat-num">NSF</div><div class="stat-label">Certified</div></div>
+      <div class="stat"><div class="stat-num">N.VA</div><div class="stat-label">&amp; DC Metro</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-main"><span class="ph">[ Your best commercial photo ]</span><div class="cap cap-dk">Commercial — restaurant / food service</div></div>
+    <div class="hero-thumbs">
+      <div class="hero-thumb"><span class="ph">[ Residential ]</span><div class="cap cap-dk">Residential</div></div>
+      <div class="hero-thumb"><span class="ph">[ Detail shot ]</span><div class="cap cap-dk">Craftsmanship</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="t-item">Stainless Steel Countertops<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">Commercial Kitchen Equipment<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">NSF Certified Food Service<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">Custom Range Hoods<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">Bar Carts &amp; Shelving<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">Residential &amp; Commercial<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">Free Quotes &amp; On-Site Measurement<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">Fabrication &amp; Full Installation<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">Stainless Steel Countertops<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">Commercial Kitchen Equipment<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">NSF Certified Food Service<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">Custom Range Hoods<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">Bar Carts &amp; Shelving<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">Residential &amp; Commercial<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">Free Quotes &amp; On-Site Measurement<span class="t-sep"> ✦ </span></span>
+    <span class="t-item">Fabrication &amp; Full Installation<span class="t-sep"> ✦ </span></span>
+  </div>
+</div>
+
+<section class="sec" id="commercial">
+  <div class="eyebrow">Our core business</div>
+  <h2 class="sec-h2">Commercial &amp;<br>Food Service</h2>
+  <p class="sec-p">We build what professional kitchens and businesses depend on — fabricated to exact specifications, NSF certified where required, and built to last decades.</p>
+  <div class="work-grid">
+    <div class="work-card"><div class="work-photo dk"><span class="ph">[ Restaurant kitchen ]</span></div><div class="work-body"><div class="work-title">Restaurant Kitchens</div><div class="work-desc">Full commercial builds — prep tables, sinks, shelving systems, and custom surfaces built to health code standards.</div><span class="work-tag">NSF Certified</span></div></div>
+    <div class="work-card"><div class="work-photo dk"><span class="ph">[ Food service ]</span></div><div class="work-body"><div class="work-title">Food Service Equipment</div><div class="work-desc">Custom fabricated equipment for cafeterias, delis, and food production — built to exacting commercial standards.</div><span class="work-tag">Custom to spec</span></div></div>
+    <div class="work-card"><div class="work-photo"><span class="ph-lt">[ Architectural ]</span></div><div class="work-body"><div class="work-title">Architectural Metalwork</div><div class="work-desc">Working alongside architects and contractors on commercial builds — facades, features, and structural metal elements.</div><span class="work-tag">Contractor-ready</span></div></div>
+    <div class="work-card"><div class="work-photo"><span class="ph-lt">[ Repair / replacement ]</span></div><div class="work-body"><div class="work-title">Repairs &amp; Replacements</div><div class="work-desc">Fast turnaround on damaged commercial pieces. We match finishes, replicate dimensions, and get you back in service.</div><span class="work-tag">Fast turnaround</span></div></div>
+  </div>
+</section>
+
+<section class="sec" id="residential">
+  <div class="eyebrow">For homeowners</div>
+  <h2 class="sec-h2">Residential<br>Fabrication</h2>
+  <p class="sec-p">The same craftsmanship we bring to commercial kitchens — applied to your home. Browse by category below.</p>
+  <div class="cat-bar">
+    <div class="cat-tab active">Residential</div>
+    <div class="cat-tab">Commercial</div>
+    <div class="cat-tab">Something Special</div>
+    <div class="cat-tab">Specialty</div>
+  </div>
+  <div class="work-grid">
+    <div class="work-card"><div class="work-photo"><span class="ph-lt">[ Countertop photo ]</span></div><div class="work-body"><div class="work-title">Countertops &amp; Sinks</div><div class="work-desc">Seamless stainless countertops for kitchens, bars, and outdoor spaces. Integrated sinks available.</div><span class="work-tag">Most requested</span></div></div>
+    <div class="work-card"><div class="work-photo dk"><span class="ph">[ Range hood ]</span></div><div class="work-body"><div class="work-title">Range Hoods &amp; Backsplashes</div><div class="work-desc">Stainless or copper range hoods and backsplashes fabricated to your exact kitchen dimensions and finish.</div><span class="work-tag">Copper available</span></div></div>
+    <div class="work-card"><div class="work-photo"><span class="ph-lt">[ Outdoor kitchen ]</span></div><div class="work-body"><div class="work-title">Outdoor Kitchens</div><div class="work-desc">Weatherproof stainless work surfaces, grill surrounds, and storage built for outdoor living.</div><span class="work-tag">Weatherproof</span></div></div>
+    <div class="work-card"><div class="work-photo dk"><span class="ph">[ Custom piece ]</span></div><div class="work-body"><div class="work-title">Custom &amp; Specialty</div><div class="work-desc">Railings, wine racks, bar carts, furniture frames — if you can sketch it, we can build it. Aluminum and copper too.</div><span class="work-tag">Anything goes</span></div></div>
+  </div>
+</section>
+
+<section class="sec quick-sec" id="quick">
+  <div class="quick-hdr">
+    <div>
+      <div class="eyebrow">Now taking smaller &amp; residential jobs</div>
+      <h2 class="sec-h2">Need Something<br>Built Quickly?</h2>
+      <p class="sec-p" style="margin-bottom:0;">We have capacity right now. Most residential pieces turn around in 2–3 weeks — free quote within 24 hours.</p>
+    </div>
+    <div class="capacity-pill">Accepting new jobs now</div>
+  </div>
+  <div class="quick-grid">
+    <div class="q-card"><div class="q-num">01</div><div class="q-title">Bar Carts &amp; Shelving</div><div class="q-desc">Custom stainless or steel bar carts, wine racks, and shelving built to your exact dimensions.</div><div class="q-time">→ 2–3 week turnaround</div></div>
+    <div class="q-card"><div class="q-num">02</div><div class="q-title">Range Hoods</div><div class="q-desc">Residential range hoods in stainless or copper. We measure on-site and fabricate to fit perfectly.</div><div class="q-time">→ 2–3 week turnaround</div></div>
+    <div class="q-card"><div class="q-num">03</div><div class="q-title">Countertops &amp; Sinks</div><div class="q-desc">Seamless stainless countertops for kitchens, bars, laundry rooms, and outdoor spaces.</div><div class="q-time">→ 3–4 week turnaround</div></div>
+    <div class="q-card"><div class="q-num">04</div><div class="q-title">Backsplashes</div><div class="q-desc">Stainless and copper backsplashes cut and finished to match — brushed, polished, or patterned.</div><div class="q-time">→ 1–2 week turnaround</div></div>
+    <div class="q-card"><div class="q-num">05</div><div class="q-title">Outdoor Kitchens</div><div class="q-desc">Weatherproof stainless surfaces, built-in grill surrounds, and outdoor storage built to last.</div><div class="q-time">→ 3–4 week turnaround</div></div>
+    <div class="q-card"><div class="q-num">06</div><div class="q-title">One-Off Custom Work</div><div class="q-desc">Got a sketch or an idea? Bring it in. We quote free. If it can be built in metal, we'll build it.</div><div class="q-time">→ Quote within 24 hours</div></div>
+  </div>
+</section>
+
+<div class="owner-sec" id="about">
+  <div class="owner-left">
+    <div class="monogram"><span class="monogram-text">DJ</span></div>
+    <div class="owner-name">Dennis Johnson</div>
+    <div class="owner-role">Founder &amp; Owner<br>30+ Years Experience</div>
+  </div>
+  <div class="owner-right">
+    <p class="owner-quote">"We built our name on commercial work — and that's still our bread and butter. But right now we have capacity, and some of my favorite projects have always been for homeowners. We want more of that."</p>
+    <p class="owner-body">CMV was started in 1992 and has provided exceptional custom metal fabrication to homeowners, architects, and businesses ever since. Our staff of welders, metal finishers, fabrication mechanics, installation crews, and drafting personnel treat every project the same — whether it's a restaurant kitchen or a residential backsplash. We offer free quotes, on-site field measurements, fabrication, and installation. One call, one team, done right.</p>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="eyebrow">How it works</div>
+  <h2 class="sec-h2">Simple From<br>Start to Finish</h2>
+  <div class="process-row">
+    <div class="p-step"><div class="p-n">01</div><div class="p-title">Free Quote</div><div class="p-desc">Call or fill out the form. We respond same day with a no-obligation price.</div></div>
+    <div class="p-step"><div class="p-n">02</div><div class="p-title">On-Site Measure</div><div class="p-desc">We come to you. Exact measurements, every detail confirmed before we build.</div></div>
+    <div class="p-step"><div class="p-n">03</div><div class="p-title">We Build It</div><div class="p-desc">Fabricated by hand in our Manassas shop. No outsourcing. No shortcuts.</div></div>
+    <div class="p-step"><div class="p-n">04</div><div class="p-title">We Install It</div><div class="p-desc">Our crew delivers and installs. We leave when it's right — not just when it's done.</div></div>
+  </div>
+</section>
+
+<section class="sec" id="showroom">
+  <div class="eyebrow">Online showroom</div>
+  <h2 class="sec-h2">Our Work</h2>
+  <p class="sec-p">Selected photos across residential, commercial, and specialty projects. Photos &copy; Dennis Johnson.</p>
+  <div class="gallery-grid">
+    <div class="g dk"><span class="ph">[ Photo ]</span><div class="cap cap-dk">Commercial kitchen</div></div>
+    <div class="g"><span class="ph-lt">[ Photo ]</span><div class="cap cap-lt">Range hood</div></div>
+    <div class="g dk"><span class="ph">[ Photo ]</span><div class="cap cap-dk">Detail</div></div>
+    <div class="g"><span class="ph-lt">[ Photo ]</span><div class="cap cap-lt">Countertop</div></div>
+    <div class="g dk"><span class="ph">[ Photo ]</span><div class="cap cap-dk">Residential project</div></div>
+    <div class="g"><span class="ph-lt">[ Photo ]</span><div class="cap cap-lt">Custom piece</div></div>
+  </div>
+</section>
+
+<div class="contact-wrap" id="contact">
+  <div class="contact-left">
+    <div class="eyebrow">Get in touch</div>
+    <h2 class="sec-h2" style="font-size:clamp(32px,3.5vw,52px);">Start Your<br>Project</h2>
+    <div class="info-items">
+      <div><div class="i-label">Phone</div><div class="i-val">(703) 530-0111</div><div class="i-sub">Mon–Fri, 8am–5pm</div></div>
+      <div><div class="i-label">Shop</div><div class="i-val">12014 Cadet Court</div><div class="i-sub">Manassas, VA 20109</div></div>
+      <div><div class="i-label">Service Area</div><div class="i-val">Northern Virginia</div><div class="i-sub">Fairfax, Prince William, Loudoun, DC metro</div></div>
+    </div>
+    <div class="cert-box"><div class="cert-dot"></div><div class="cert-text">NSF Certified Fabrication<br>Commercial &amp; Food Service Equipment</div></div>
+  </div>
+  <div class="contact-right">
+    <div class="eyebrow">Free quotes always</div>
+    <h2 class="sec-h2" style="font-size:clamp(28px,3vw,44px); margin-bottom:0.5rem;">Tell Us What<br>You Need</h2>
+    <div class="c-form">
+      <div class="f-row">
+        <input type="text" placeholder="Your name" />
+        <input type="text" placeholder="Phone number" />
+      </div>
+      <input type="email" placeholder="Email address" />
+      <select>
+        <option value="">What can we help with?</option>
+        <optgroup label="Residential / Quick Jobs">
+          <option>Bar cart or shelving</option>
+          <option>Range hood</option>
+          <option>Countertop or sink</option>
+          <option>Backsplash</option>
+          <option>Outdoor kitchen</option>
+          <option>Custom one-off piece</option>
+        </optgroup>
+        <optgroup label="Commercial">
+          <option>Restaurant or commercial kitchen</option>
+          <option>Food service equipment</option>
+          <option>Architectural metalwork</option>
+          <option>Repair or replacement</option>
+          <option>Contractor inquiry</option>
+        </optgroup>
+      </select>
+      <textarea placeholder="Describe your project — dimensions, materials, timeline, or just a rough idea is fine..."></textarea>
+      <button class="btn-solid" style="align-self:flex-start; padding:13px 26px;">Send Message →</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo"><span class="footer-cmv">CMV</span><span class="footer-sub">Custom Metals of Virginia, Inc.</span></div>
+  <div class="footer-copy">© 2025 Custom Metals of Virginia, Inc. · 12014 Cadet Court, Manassas VA 20109 · (703) 530-0111</div>
+</footer>
+
+<script>
+  document.querySelectorAll('.cat-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
